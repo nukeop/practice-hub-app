@@ -1,0 +1,22 @@
+{
+  "name": "practice-hub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:landing": "pnpm --filter landing-page dev",
+    "dev:booking": "pnpm --filter booking-app dev",
+    "build": "pnpm --recursive build",
+    "lint": "pnpm --recursive lint",
+    "lint:fix": "pnpm --recursive lint:fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "UNLICENSED",
+  "packageManager": "pnpm@9.15.0",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
+  }
+}
