@@ -19,7 +19,7 @@ module.exports = {
         node: true,
         jest: true,
     },
-    ignorePatterns: ['eslint.config.js', "dist", ".turbo"],
+    ignorePatterns: ['.eslintrc.js', "dist", ".turbo"],
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',

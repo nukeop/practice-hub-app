@@ -1,6 +1,6 @@
 module.exports = {
     extends: [
-        "../../eslint.config.js",
+        "../../.eslintrc.js",
         "plugin:react-hooks/recommended"
     ],
     plugins: [
