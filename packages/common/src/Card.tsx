@@ -5,5 +5,7 @@ type CardProps = {
 };
 
 export const Card: FC<CardProps> = ({ children }) => {
-  return <div className="rounded-lg bg-white p-6 shadow-lg">{children}</div>;
+  return (
+    <div className="bg-stone-200 p-6 text-stone-600 shadow-lg">{children}</div>
+  );
 };

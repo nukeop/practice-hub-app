@@ -3,5 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply bg-stone-700;
+    @apply bg-stone-700 text-amber-100;
 }
+
+/* Removed additional styles for NavBar */

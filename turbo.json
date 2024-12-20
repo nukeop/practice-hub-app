@@ -28,6 +28,11 @@
             "dependsOn": [
                 "^lint:fix"
             ]
+        },
+        "test": {
+            "dependsOn": [
+                "^test"
+            ]
         }
     }
 }

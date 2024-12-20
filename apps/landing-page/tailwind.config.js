@@ -4,5 +4,9 @@ import sharedConfig from '../../tailwind.config';
 
 export default {
   ...sharedConfig,
-  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    ...sharedConfig.content,
+    '../../packages/**/*.{ts,tsx}',
+    './src/**/*.{js,ts,jsx,tsx}',
+  ],
 };
