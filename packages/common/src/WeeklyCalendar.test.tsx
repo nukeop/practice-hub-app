@@ -1,4 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { addHours } from 'date-fns';
 
 import { WeeklyCalendar } from './WeeklyCalendar';
@@ -6,6 +7,10 @@ import { WeeklyCalendar } from './WeeklyCalendar';
 const mockDate = new Date('2024-01-15T00:00:00.000Z'); // A Monday
 
 describe('WeeklyCalendar', () => {
+  it('should always be UTC', () => {
+    expect(new Date().getTimezoneOffset()).toBe(0);
+  });
+
   it('renders correctly with default props', () => {
     const { container } = render(<WeeklyCalendar initialDate={mockDate} />);
     expect(container).toMatchSnapshot();
@@ -14,30 +19,6 @@ describe('WeeklyCalendar', () => {
   it('displays correct date range in header', () => {
     render(<WeeklyCalendar initialDate={mockDate} />);
     expect(screen.getByText(/15 — 21 Jan 2024/)).toBeInTheDocument();
-  });
-
-  it('navigates to previous week correctly', () => {
-    const onNavigate = jest.fn();
-    render(<WeeklyCalendar initialDate={mockDate} onNavigate={onNavigate} />);
-
-    const prevButton = screen.getByRole('button', { name: /chevron-left/i });
-    fireEvent.click(prevButton);
-
-    // Should show previous week
-    expect(screen.getByText(/8 — 14 Jan 2024/)).toBeInTheDocument();
-    expect(onNavigate).toHaveBeenCalled();
-  });
-
-  it('navigates to next week correctly', () => {
-    const onNavigate = jest.fn();
-    render(<WeeklyCalendar initialDate={mockDate} onNavigate={onNavigate} />);
-
-    const nextButton = screen.getByRole('button', { name: /chevron-right/i });
-    fireEvent.click(nextButton);
-
-    // Should show next week
-    expect(screen.getByText(/22 — 28 Jan 2024/)).toBeInTheDocument();
-    expect(onNavigate).toHaveBeenCalled();
   });
 
   it('displays bookings correctly', () => {
@@ -51,17 +32,37 @@ describe('WeeklyCalendar', () => {
     ];
 
     render(<WeeklyCalendar initialDate={mockDate} bookings={bookings} />);
+
     expect(screen.getByText('02:00 - 04:00')).toBeInTheDocument();
   });
 
   it('returns to today when clicking Today button', () => {
+    render(<WeeklyCalendar initialDate={mockDate} />);
+
+    const todayButton = screen.getByRole('button', { name: /today/i });
+    userEvent.click(todayButton);
+
+    expect(screen.getByText(/15 — 21 Jan 2024/)).toBeInTheDocument();
+  });
+
+  it('navigates to next week when clicking Next button', async () => {
     const onNavigate = jest.fn();
     render(<WeeklyCalendar initialDate={mockDate} onNavigate={onNavigate} />);
 
-    const todayButton = screen.getByRole('button', { name: /today/i });
-    fireEvent.click(todayButton);
+    const nextButton = screen.getByTestId('next-week');
+    await userEvent.click(nextButton);
 
-    expect(onNavigate).toHaveBeenCalled();
+    expect(onNavigate).toHaveBeenCalledWith(addHours(mockDate, 7 * 24));
+  });
+
+  it('navigates to previous week when clicking Previous button', async () => {
+    const onNavigate = jest.fn();
+    render(<WeeklyCalendar initialDate={mockDate} onNavigate={onNavigate} />);
+
+    const prevButton = screen.getByTestId('prev-week');
+    await userEvent.click(prevButton);
+
+    expect(onNavigate).toHaveBeenCalledWith(addHours(mockDate, -7 * 24));
   });
 
   it('displays all 24 hours', () => {

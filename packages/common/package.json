@@ -12,9 +12,7 @@
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
-    "date-fns": "^4.1.0",
-    "npm": "^10.9.2",
-    "pnpm": "^9.15.0"
+    "date-fns": "^4.1.0"
   },
   "devDependencies": {
     "@testing-library/react": "^16.1.0",
@@ -24,6 +22,7 @@
   "peerDependencies": {
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/node": "^22.10.2",
     "next": "^15",
     "react": "^19",
     "react-dom": "^19"

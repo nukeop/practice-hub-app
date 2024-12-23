@@ -8,6 +8,7 @@ const config: Config = {
     '^.+\\.tsx?$': ['ts-jest', { tsconfig: './tsconfig.json' }],
   },
   setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  globalSetup: './jest.setup.ts',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)'],
   roots: [path.join(__dirname, 'packages'), path.join(__dirname, 'apps')],

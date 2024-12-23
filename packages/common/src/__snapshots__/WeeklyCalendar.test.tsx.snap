@@ -25,6 +25,7 @@ exports[`WeeklyCalendar renders correctly with default props 1`] = `
         </button>
         <button
           class="rounded-full px-6 py-3 font-bold transition-colors border-stone-800 text-stone-400 hover:bg-stone-900 hover:text-stone-200 border-2 bg-transparent border-gray-700 bg-gray-800 text-gray-100 hover:bg-gray-700"
+          data-testid="prev-week"
         >
           <svg
             class="lucide lucide-chevron-left h-4 w-4"
@@ -45,6 +46,7 @@ exports[`WeeklyCalendar renders correctly with default props 1`] = `
         </button>
         <button
           class="rounded-full px-6 py-3 font-bold transition-colors border-stone-800 text-stone-400 hover:bg-stone-900 hover:text-stone-200 border-2 bg-transparent border-gray-700 bg-gray-800 text-gray-100 hover:bg-gray-700"
+          data-testid="next-week"
         >
           <svg
             class="lucide lucide-chevron-right h-4 w-4"

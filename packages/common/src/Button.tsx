@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ReactNode } from 'react';
 
 interface ButtonProps {
+  'data-testid'?: string;
   href?: string;
   variant?: 'solid' | 'outline';
   size?: 'sm' | 'icon';
@@ -11,6 +12,7 @@ interface ButtonProps {
 }
 
 export const Button = ({
+  'data-testid': testId,
   href,
   variant = 'solid',
   size,
@@ -29,11 +31,15 @@ export const Button = ({
 
   if (href) {
     return (
-      <Link href={href} className={combinedStyles}>
+      <Link href={href} className={combinedStyles} data-testid={testId}>
         {children}
       </Link>
     );
   }
 
-  return <button className={combinedStyles}>{children}</button>;
+  return (
+    <button data-testid={testId} className={combinedStyles} onClick={onClick}>
+      {children}
+    </button>
+  );
 };

@@ -22,13 +22,13 @@ interface Booking {
 interface WeeklyCalendarProps {
   bookings?: Booking[];
   onNavigate?: (date: Date) => void;
-  initialDate?: Date; // Add this prop
+  initialDate?: Date;
 }
 
 export function WeeklyCalendar({
   bookings = [],
   onNavigate,
-  initialDate = new Date(), // Use initialDate with default
+  initialDate = new Date(),
 }: WeeklyCalendarProps) {
   const [currentDate, setCurrentDate] = useState(initialDate);
   const startOfCurrentWeek = startOfWeek(currentDate, { weekStartsOn: 1 });
@@ -64,6 +64,7 @@ export function WeeklyCalendar({
             Today
           </Button>
           <Button
+            data-testid="prev-week"
             variant="outline"
             size="icon"
             onClick={() => navigateWeek('prev')}
@@ -72,6 +73,7 @@ export function WeeklyCalendar({
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <Button
+            data-testid="next-week"
             variant="outline"
             size="icon"
             onClick={() => navigateWeek('next')}
@@ -128,6 +130,7 @@ export function WeeklyCalendar({
                   return (
                     <div
                       key={booking.id}
+                      data-testid="booking"
                       style={{
                         top: `${top}px`,
                         height: `${height}px`,
