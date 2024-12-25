@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply bg-stone-700 text-amber-100;
+    @apply bg-stone-900 from-stone-900 to-stone-950 bg-gradient-to-b bg-fixed min-h-full text-stone-300;
 }
 
 /* Removed additional styles for NavBar */

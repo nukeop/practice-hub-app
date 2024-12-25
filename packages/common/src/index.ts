@@ -1,4 +1,4 @@
 export * from './Card';
 export * from './NavBar';
 export * from './Button';
-export * from './WeeklyCalendar';
+export * from './BookingCalendar';

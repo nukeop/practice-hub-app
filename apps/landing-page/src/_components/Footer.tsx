@@ -5,7 +5,7 @@ export const Footer = () => (
     <div className="container mx-auto px-4">
       <div className="flex flex-col items-center justify-between md:flex-row">
         <div className="text-amber mb-4 text-2xl font-bold md:mb-0">
-          MusicSpace
+          Practice Hub
         </div>
         <nav className="mb-4 md:mb-0">
           <ul className="flex space-x-4">
@@ -34,7 +34,7 @@ export const Footer = () => (
         <div className="flex space-x-4">{/* social media icons here */}</div>
       </div>
       <div className="mt-8 text-center">
-        <p>&copy; 2024 MusicSpace. All rights reserved.</p>
+        <p>&copy; 2024 Practice Hub. All rights reserved.</p>
       </div>
     </div>
   </footer>

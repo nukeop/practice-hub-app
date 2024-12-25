@@ -8,7 +8,8 @@
     "dev:booking": "pnpm --filter booking-app dev",
     "build": "turbo build",
     "lint": "turbo lint",
-    "lint:fix": "turbo lint:fix"
+    "lint:fix": "turbo lint:fix",
+    "test": "turbo test"
   },
   "keywords": [],
   "author": "",
@@ -26,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
     "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",

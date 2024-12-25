@@ -1,8 +1,5 @@
 import { BookingCalendar } from '@practice-hub/common';
 
-import { HeroSection } from '../_components/HeroSection';
-import { Navbar } from '../_components/Navbar';
-
 const sampleBookings = [
   {
     id: '1',
@@ -24,20 +21,16 @@ const sampleBookings = [
   },
   {
     id: '4',
-    start: new Date(2024, 11, 20, 23, 0),
-    end: new Date(2024, 11, 21, 1, 0),
+    start: new Date(2024, 11, 20, 22, 0),
+    end: new Date(2024, 11, 20, 23, 0),
     color: 'yellow' as const,
   },
 ];
 
 export default function Page() {
   return (
-    <div>
-      <Navbar />
-      <HeroSection />
-      <div className="relative h-96">
-        <BookingCalendar bookings={sampleBookings} />
-      </div>
+    <div className="relative">
+      <BookingCalendar bookings={sampleBookings} />
     </div>
   );
 }
