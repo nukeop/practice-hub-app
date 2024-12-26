@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  addDays,
-  differenceInMinutes,
-  format,
-  isSameDay,
-  startOfWeek,
-} from 'date-fns';
+import { addDays, isSameDay, startOfWeek } from 'date-fns';
 import { useState } from 'react';
 
 import { BookingCalendarDateColumn } from './BookingCalendarDateColumn';
@@ -37,7 +31,6 @@ export function BookingCalendar({
   const weekDates = Array.from({ length: 7 }, (_, i) =>
     addDays(startOfCurrentWeek, i),
   );
-  const hours = Array.from({ length: 24 }, (_, i) => i);
 
   const navigateWeek = (direction: 'prev' | 'next') => {
     const newDate = addDays(currentDate, direction === 'prev' ? -7 : 7);
@@ -58,10 +51,11 @@ export function BookingCalendar({
         weekDates={weekDates}
       />
 
-      <div className="grid min-w-[800px] grid-cols-[auto_repeat(7,_minmax(120px,_1fr))] overflow-x-auto">
+      <div className="grid min-w-[800px] grid-cols-[auto_repeat(7,_minmax(120px,_1fr))] overflow-x-auto overflow-y-hidden">
         <BookingCalendarHoursColumn />
         {weekDates.map((date) => (
           <BookingCalendarDateColumn
+            key={date.toString()}
             date={date}
             bookings={getBookingsForDate(date)}
           />

@@ -29,7 +29,7 @@ const sampleBookings = [
 
 export default function Page() {
   return (
-    <div className="relative">
+    <div className="relative h-auto">
       <BookingCalendar bookings={sampleBookings} />
     </div>
   );
